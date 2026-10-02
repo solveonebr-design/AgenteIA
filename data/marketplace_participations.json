@@ -1,0 +1,19 @@
+{
+  "payload": [
+    {
+      "marketplace": {
+        "id": "A2Q3Y263D00KWC",
+        "countryCode": "BR",
+        "name": "Amazon.com.br",
+        "defaultCurrencyCode": "BRL",
+        "defaultLanguageCode": "pt_BR",
+        "domainName": "www.amazon.com.br"
+      },
+      "storeName": "SOLVEONEBR",
+      "participation": {
+        "isParticipating": true,
+        "hasSuspendedListings": false
+      }
+    }
+  ]
+}
