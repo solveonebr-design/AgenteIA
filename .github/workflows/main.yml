@@ -35,11 +35,21 @@ jobs:
           echo "::add-mask::$TOKEN"
 
           mkdir -p data
-          curl -sS -f "$SPAPI_ENDPOINT/sellers/v1/marketplaceParticipations" \
+          HTTP=$(curl -sS -o data/resposta.json -w "%{http_code}" \
+            "$SPAPI_ENDPOINT/sellers/v1/marketplaceParticipations" \
             -H "x-amz-access-token: $TOKEN" \
-            -H "Content-Type: application/json" \
-            | jq . > data/marketplace_participations.json
+            -H "Content-Type: application/json")
+          echo "HTTP status: $HTTP"
 
+          if [ "$HTTP" != "200" ]; then
+            echo "Resposta da Amazon:"
+            jq . data/resposta.json || cat data/resposta.json
+            rm -f data/resposta.json
+            exit 1
+          fi
+
+          jq . data/resposta.json > data/marketplace_participations.json
+          rm -f data/resposta.json
           echo "Conexao OK"
 
       - name: Salvar resultado no repositorio
