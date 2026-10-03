@@ -16,25 +16,25 @@ TITLE = ("Escorredor de Silicone Retrátil Dobrável Quadrado com Alças, Coador
 BULLETS = [
     "DOBRÁVEL E COMPACTO: aberto mede cerca de 29 x 21,5 x 8,5 cm e, retraído, fica com apenas 4,5 cm "
     "de altura. Guarda com facilidade em gavetas e armários e é prático para levar em viagens e camping.",
-    "RESISTE À ÁGUA FERVENTE: escorra macarrão e outras massas direto da panela, lave frutas, legumes, "
-    "verduras e arroz ou use como cesto para servir. Um único utensílio para várias tarefas do dia a dia.",
+    "MULTIUSO NA COZINHA: escorra macarrão e outras massas, lave frutas, legumes, verduras e arroz ou use "
+    "como cesto para servir. Um único utensílio para várias tarefas do dia a dia.",
     "DRENAGEM RÁPIDA: o fundo perfurado deixa a água escoar rapidamente, sem acumular, para que os "
     "alimentos fiquem limpos e prontos em menos tempo.",
     "ALÇAS LATERAIS: as duas alças facilitam segurar o escorredor com firmeza e apoiá-lo sobre a pia ou "
     "dentro de uma bacia, mantendo as mãos longe da água.",
-    "LIVRE DE BPA E VAI À LAVA-LOUÇAS: corpo em silicone flexível com borda e base em plástico rígido, sem BPA "
-    "e com apenas 147 g. Pode ser lavado na lava-louças. Disponível nas cores vermelho e verde.",
+    "LEVE E FÁCIL DE LIMPAR: corpo em silicone flexível com borda e base em polipropileno (PP), sem BPA e "
+    "com apenas 147 g. Lave com água e detergente neutro e guarde retraído depois do uso.",
 ]
 
 DESCRIPTION = (
     "Escorredor de silicone retrátil com formato quadrado e alças laterais, feito para simplificar a rotina "
     "na cozinha e economizar espaço.\n\n"
-    "Aberto, serve para escorrer macarrão direto da panela, pois resiste à água fervente, lavar frutas, legumes, verduras e arroz ou servir "
+    "Aberto, serve para escorrer macarrão, lavar frutas, legumes, verduras e arroz ou servir "
     "alimentos. Depois do uso, basta pressionar para retraí-lo: ele fica com apenas 4,5 cm de altura e cabe "
     "em gavetas, armários, mochilas de camping e motorhomes.\n\n"
-    "O corpo em silicone flexível, combinado com a borda e a base em plástico rígido, deixa o escorredor "
-    "leve, firme e livre de BPA. Pode ser lavado na lava-louças, e o fundo perfurado garante drenagem rápida "
-    "da água.\n\n"
+    "O corpo em silicone flexível, combinado com a borda e a base em polipropileno (PP), deixa o escorredor "
+    "leve, firme e livre de BPA. É fácil de lavar com água e detergente neutro, e o fundo perfurado garante "
+    "drenagem rápida da água.\n\n"
     "Medidas aproximadas:\n"
     "- Aberto: 29 x 21,5 x 8,5 cm\n"
     "- Retraído: 29 x 21,5 x 4,5 cm\n"
@@ -46,8 +46,7 @@ DESCRIPTION = (
 KEYWORDS = ("peneira cesto colapsável sanfonado lavar arroz salada massas utensílio compacto economiza espaço "
             "camping viagem motorhome utilidades domésticas cozinha vasilha bacia hortifrúti organização sem bpa")
 
-SPECIAL_FEATURES = ["Retrátil", "Dobrável", "Livre de BPA", "Pode ir à lava-louças", "Resiste à água fervente",
-                    "Alças laterais"]
+SPECIAL_FEATURES = ["Retrátil", "Dobrável", "Livre de BPA", "Alças laterais", "Fácil de limpar"]
 SKUS = {"SV_0011": None, "SV_0011_VERMELHO_FBA": "Vermelho", "SV_0011_VERDE_FBA": "Verde"}
 
 
