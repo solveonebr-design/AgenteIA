@@ -104,6 +104,7 @@ def build(source, mkt):
     base = {k: val for k, val in copy.deepcopy(source).items()
             if not k.startswith("main_product_image") and not k.startswith("other_product_image")}
     base.pop("merchant_suggested_asin", None)
+    base["is_dishwasher_safe"] = [{"value": False, "marketplace_id": mkt}]  # instrucao: lavar a mao
 
     parent = {k: val for k, val in base.items() if k not in OFFER_ATTRS and k != "color"}
     parent.update(content(mkt))
