@@ -1,0 +1,19 @@
+sku,asin,titulo,tipo_produto,status,preco,moeda,criado_em,atualizado_em
+SV_NV0012_FBA,B0HLT2N631,"Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",FOOD_PROCESSOR,DISCOVERABLE,,,2026-10-02T16:28:13.048Z,2026-10-02T16:28:13.048Z
+SV_NV0012_PRETO_FBA,B0HLTGKTSD,"Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos - Preto",FOOD_PROCESSOR,DISCOVERABLE,31.99,BRL,2026-10-02T16:28:04.655Z,2026-10-02T16:28:04.655Z
+SV_NV0012_VERMELHO_FBA,B0HLT3DN3F,"Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos - Vermelho",FOOD_PROCESSOR,DISCOVERABLE,31.99,BRL,2026-10-02T16:28:04.638Z,2026-10-02T16:28:04.638Z
+Trituradorvermelho02,B0HLBDSFLG,Triturador de Alho Manual 500ml com Lâminas em Aço Inox para Cozinha Vermelho,GARLIC_PRESS,DISCOVERABLE,31.99,BRL,2026-09-28T17:54:31.076Z,2026-09-28T17:54:31.076Z
+TrituradorPreto01,B0HLB5V3YT,Triturador de Alho Manual 500ml com Lâminas em Aço Inox para Cozinha Preto,GARLIC_PRESS,DISCOVERABLE,31.99,BRL,2026-09-28T17:54:31.074Z,2026-09-28T17:54:31.074Z
+SV_0012_Vermelho_FBA,B0HJSJVNJY,"Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",FOOD_PROCESSOR,DISCOVERABLE,31.99,BRL,2026-09-25T23:49:51.605Z,2026-09-28T15:14:28.387Z
+SV_0012_Preto_FBA,B0HJSJVNJY,"Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",FOOD_PROCESSOR,DISCOVERABLE,31.99,BRL,2026-09-25T23:49:51.597Z,2026-09-25T23:49:51.597Z
+SV_0011_FBA,B0HJT25LB3,Escorredor de Silicone Multiuso Quadrado Retrátil Dobrável para Cozinha Pia Frutas Legumes e Louças,DRYING_RACK,DISCOVERABLE,25.99,BRL,2026-09-14T18:34:56.758Z,2026-09-14T18:34:56.758Z
+SV_0010_FBA,B0HJRY93GR,"Organizador de Sapatos Desmontável 4 Andares para Calçados, Tênis e Chinelos - Preto",CLOTHES_RACK,DISCOVERABLE,39.99,BRL,2026-09-14T17:36:18.142Z,2026-09-14T17:36:18.142Z
+0007_FBA,B0HJRHVQLF,"Kit 5 Mini Bands Elásticas para Exercícios, Academia, Treino em Casa, Fitness e Fortalecimento Muscular",EXERCISE_BAND,DISCOVERABLE,22.99,BRL,2026-09-14T13:35:23.106Z,2026-09-14T14:40:32.689Z
+SV_0008_FBA,B0HJRMB9N4,"Organizador para Carro Banco Traseiro Multiuso com Compartimentos para Brinquedos, Objetos e Acessórios",CADDY,DISCOVERABLE,39.99,BRL,2026-09-14T14:04:07.540Z,2026-09-14T14:39:47.173Z
+SV_0009_FBA,B0HJS1NDQB,Pano Descartável Multiuso Tipo Perfex em Rolo com 50 Panos 25x30cm para Limpeza e Uso Diário,PAPER_TOWEL,DISCOVERABLE,28.99,BRL,2026-09-14T14:38:37.788Z,2026-09-14T14:38:37.788Z
+SV_0006_FBA,B0HJRK1P5F,"Baralho Dourado Resistente à Água e Anti-Rasgo, Cartas Estilo Dólar para Poker, Truco e Jogos",TABLETOP_GAME,DISCOVERABLE,30.99,BRL,2026-09-14T14:08:29.611Z,2026-09-14T14:08:29.611Z
+0002N_FBA,B0HJKGM3ZY,Forma de Gelo Cubo com Tampa Rígida e Fundo de Silicone Flexível,ICE_CUBE_TRAY,DISCOVERABLE,22.99,BRL,2026-09-11T21:24:06.178Z,2026-09-11T21:30:52.376Z
+0005_FBA,B0HJJQK5Y9,"Pochete Impermeável para Corrida e Caminhada Fitness com Porta Celular, Ajustável e Refletiva",WAIST_PACK,DISCOVERABLE,24.99,BRL,2026-09-11T21:06:32.987Z,2026-09-11T21:28:49.244Z
+0004_FBA,B0HJJJLPPQ,"Bolsa Térmica Lancheira com Alça Ajustável para Alimentos e Bebidas, Prática e Fácil de Transportar",MEAL_HOLDER,DISCOVERABLE,32.99,BRL,2026-09-11T20:24:38.793Z,2026-09-11T20:31:20.918Z
+0003_FBA,B0HJJL2Y7G,"Kit 24 Canetas Marcadoras Permanentes Ponta Dupla Coloridas para Desenho, Lettering e Artesanato",MARKING_PEN,DISCOVERABLE,20.99,BRL,2026-09-11T19:52:15.522Z,2026-09-11T20:29:07.165Z
+0001_FBA,B0HFSRFJVY,Limpador de Ouvidos Kit com Peças em Aço Inox e Estojo para Higiene e Cuidados Pessoais,PERSONAL_CARE_APPLIANCE,BUYABLE|DISCOVERABLE,14.9,BRL,2026-08-19T12:14:48.713Z,2026-08-19T19:07:14.062Z

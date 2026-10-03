@@ -1,0 +1,672 @@
+[
+  {
+    "sku": "SV_NV0012_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLT2N631",
+        "productType": "FOOD_PROCESSOR",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "itemName": "Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",
+        "createdDate": "2026-10-02T16:28:13.048Z",
+        "lastUpdatedDate": "2026-10-02T16:28:13.048Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31DQ+axm0oL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": []
+  },
+  {
+    "sku": "SV_NV0012_PRETO_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLTGKTSD",
+        "productType": "FOOD_PROCESSOR",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005CPX6DH",
+        "itemName": "Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos - Preto",
+        "createdDate": "2026-10-02T16:28:04.655Z",
+        "lastUpdatedDate": "2026-10-02T16:28:04.655Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31OCq+yOBwL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_NV0012_VERMELHO_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLT3DN3F",
+        "productType": "FOOD_PROCESSOR",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005COQROX",
+        "itemName": "Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos - Vermelho",
+        "createdDate": "2026-10-02T16:28:04.638Z",
+        "lastUpdatedDate": "2026-10-02T16:28:04.638Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31DQ+axm0oL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "Trituradorvermelho02",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLBDSFLG",
+        "productType": "GARLIC_PRESS",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005BRIPKZ",
+        "itemName": "Triturador de Alho Manual 500ml com Lâminas em Aço Inox para Cozinha Vermelho",
+        "createdDate": "2026-09-28T17:54:31.076Z",
+        "lastUpdatedDate": "2026-09-28T17:54:31.076Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31DQ+axm0oL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "TrituradorPreto01",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLB5V3YT",
+        "productType": "GARLIC_PRESS",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005BRIPO1",
+        "itemName": "Triturador de Alho Manual 500ml com Lâminas em Aço Inox para Cozinha Preto",
+        "createdDate": "2026-09-28T17:54:31.074Z",
+        "lastUpdatedDate": "2026-09-28T17:54:31.074Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31OCq+yOBwL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0012_Vermelho_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJSJVNJY",
+        "productType": "FOOD_PROCESSOR",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005BO0HLN",
+        "itemName": "Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",
+        "createdDate": "2026-09-25T23:49:51.605Z",
+        "lastUpdatedDate": "2026-09-28T15:14:28.387Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31DQ+axm0oL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0012_Preto_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJSJVNJY",
+        "productType": "FOOD_PROCESSOR",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005BO0DZN",
+        "itemName": "Processador e Triturador de Alimentos Premium 500ml com 3 Lâminas para Cozinha, Legumes e Temperos",
+        "createdDate": "2026-09-25T23:49:51.597Z",
+        "lastUpdatedDate": "2026-09-25T23:49:51.597Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31DQ+axm0oL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "31.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0011_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJT25LB3",
+        "productType": "DRYING_RACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B1KDKV",
+        "itemName": "Escorredor de Silicone Multiuso Quadrado Retrátil Dobrável para Cozinha Pia Frutas Legumes e Louças",
+        "createdDate": "2026-09-14T18:34:56.758Z",
+        "lastUpdatedDate": "2026-09-14T18:34:56.758Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/21FG7ijmjBL.jpg",
+          "height": 400,
+          "width": 400
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "25.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0010_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJRY93GR",
+        "productType": "CLOTHES_RACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B19181",
+        "itemName": "Organizador de Sapatos Desmontável 4 Andares para Calçados, Tênis e Chinelos - Preto",
+        "createdDate": "2026-09-14T17:36:18.142Z",
+        "lastUpdatedDate": "2026-09-14T17:36:18.142Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/41mFqOB8faL.jpg",
+          "height": 907,
+          "width": 587
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "39.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0007_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJRHVQLF",
+        "productType": "EXERCISE_BAND",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B1376N",
+        "itemName": "Kit 5 Mini Bands Elásticas para Exercícios, Academia, Treino em Casa, Fitness e Fortalecimento Muscular",
+        "createdDate": "2026-09-14T13:35:23.106Z",
+        "lastUpdatedDate": "2026-09-14T14:40:32.689Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/41znJvw26SL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "22.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0008_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJRMB9N4",
+        "productType": "CADDY",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B17QFB",
+        "itemName": "Organizador para Carro Banco Traseiro Multiuso com Compartimentos para Brinquedos, Objetos e Acessórios",
+        "createdDate": "2026-09-14T14:04:07.540Z",
+        "lastUpdatedDate": "2026-09-14T14:39:47.173Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31Phjery1VL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "39.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0009_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJS1NDQB",
+        "productType": "PAPER_TOWEL",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B1I12D",
+        "itemName": "Pano Descartável Multiuso Tipo Perfex em Rolo com 50 Panos 25x30cm para Limpeza e Uso Diário",
+        "createdDate": "2026-09-14T14:38:37.788Z",
+        "lastUpdatedDate": "2026-09-14T14:38:37.788Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31MCMI5HZtL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "28.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "SV_0006_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJRK1P5F",
+        "productType": "TABLETOP_GAME",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005B0FCNP",
+        "itemName": "Baralho Dourado Resistente à Água e Anti-Rasgo, Cartas Estilo Dólar para Poker, Truco e Jogos",
+        "createdDate": "2026-09-14T14:08:29.611Z",
+        "lastUpdatedDate": "2026-09-14T14:08:29.611Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/413mvMjln9L.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "30.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0002N_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJKGM3ZY",
+        "productType": "ICE_CUBE_TRAY",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005AXK8U5",
+        "itemName": "Forma de Gelo Cubo com Tampa Rígida e Fundo de Silicone Flexível",
+        "createdDate": "2026-09-11T21:24:06.178Z",
+        "lastUpdatedDate": "2026-09-11T21:30:52.376Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31vYBQ613dL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "22.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0005_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJJQK5Y9",
+        "productType": "WAIST_PACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005AXQ0GL",
+        "itemName": "Pochete Impermeável para Corrida e Caminhada Fitness com Porta Celular, Ajustável e Refletiva",
+        "createdDate": "2026-09-11T21:06:32.987Z",
+        "lastUpdatedDate": "2026-09-11T21:28:49.244Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31kUMJr30YL.jpg",
+          "height": 250,
+          "width": 463
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "24.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0004_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJJJLPPQ",
+        "productType": "MEAL_HOLDER",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005AY4549",
+        "itemName": "Bolsa Térmica Lancheira com Alça Ajustável para Alimentos e Bebidas, Prática e Fácil de Transportar",
+        "createdDate": "2026-09-11T20:24:38.793Z",
+        "lastUpdatedDate": "2026-09-11T20:31:20.918Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/415AZVA2ikL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "32.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0003_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJJL2Y7G",
+        "productType": "MARKING_PEN",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X005AWOYZV",
+        "itemName": "Kit 24 Canetas Marcadoras Permanentes Ponta Dupla Coloridas para Desenho, Lettering e Artesanato",
+        "createdDate": "2026-09-11T19:52:15.522Z",
+        "lastUpdatedDate": "2026-09-11T20:29:07.165Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/31s08a1LYbL.jpg",
+          "height": 500,
+          "width": 500
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "20.99"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  },
+  {
+    "sku": "0001_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HFSRFJVY",
+        "productType": "PERSONAL_CARE_APPLIANCE",
+        "conditionType": "new_new",
+        "status": [
+          "BUYABLE",
+          "DISCOVERABLE"
+        ],
+        "fnSku": "X0058ZEB8F",
+        "itemName": "Limpador de Ouvidos Kit com Peças em Aço Inox e Estojo para Higiene e Cuidados Pessoais",
+        "createdDate": "2026-08-19T12:14:48.713Z",
+        "lastUpdatedDate": "2026-08-19T19:07:14.062Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/21RwM0sQOkL.jpg",
+          "height": 220,
+          "width": 220
+        }
+      }
+    ],
+    "offers": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "offerType": "B2C",
+        "price": {
+          "currency": "BRL",
+          "currencyCode": "BRL",
+          "amount": "14.9"
+        },
+        "audience": {
+          "value": "ALL",
+          "displayName": "Vender na Amazon"
+        }
+      }
+    ]
+  }
+]
