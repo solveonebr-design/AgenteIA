@@ -3,15 +3,15 @@
 
 Estrutura:
   SV_0011              pai (sem oferta), tema de variacao COLOR
-  SV_0011_FBA          filho Vermelho (anuncio existente, mantem o ASIN)
-  SV_0011_VERDE_FBA    filho Verde (novo, copia os atributos do existente)
+  SV_0011_VERMELHO_FBA filho Vermelho (ASIN B0HJT25LB3, substituiu o SKU SV_0011_FBA)
+  SV_0011_VERDE_FBA    filho Verde (novo, copia os atributos do Vermelho)
 
 Uso:
   python3 scripts/variacoes_sv0011.py preview [fotos.json]   # so valida, nao grava
   python3 scripts/variacoes_sv0011.py aplicar [fotos.json]   # grava na Amazon
 
 fotos.json (opcional): {"Vermelho": ["url principal", "url 2", ...], "Verde": [...]}
-Sem o arquivo, as cores usam as fotos atuais do SV_0011_FBA.
+Sem o arquivo, as cores usam as fotos atuais do SV_0011_VERMELHO_FBA.
 """
 import copy
 import json
@@ -22,7 +22,7 @@ import listar_produtos as lp
 
 PRODUCT_TYPE = "DRYING_RACK"
 PARENT_SKU = "SV_0011"
-SOURCE_SKU = "SV_0011_FBA"
+SOURCE_SKU = "SV_0011_VERMELHO_FBA"
 CHILDREN = {"Vermelho": SOURCE_SKU, "Verde": "SV_0011_VERDE_FBA"}
 OFFER_ATTRS = ("purchasable_offer", "list_price", "fulfillment_availability", "skip_offer", "condition_type")
 IMAGE_ATTRS = ["main_product_image_locator"] + [f"other_product_image_locator_{i}" for i in range(1, 9)]
