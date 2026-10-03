@@ -29,7 +29,7 @@ BULLETS = [
 DESCRIPTION = (
     "Escorredor de silicone retrátil com formato quadrado e alças laterais, feito para simplificar a rotina "
     "na cozinha e economizar espaço.\n\n"
-    "Aberto, tem capacidade para escorrer macarrão, lavar frutas, legumes, verduras e arroz ou servir "
+    "Aberto, serve para escorrer macarrão, lavar frutas, legumes, verduras e arroz ou servir "
     "alimentos. Depois do uso, basta pressionar para retraí-lo: ele fica com apenas 4,5 cm de altura e cabe "
     "em gavetas, armários, mochilas de camping e motorhomes.\n\n"
     "O corpo em silicone flexível, combinado com a borda e a base em plástico rígido, deixa o escorredor "
