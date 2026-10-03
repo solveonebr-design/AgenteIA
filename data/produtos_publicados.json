@@ -1,5 +1,74 @@
 [
   {
+    "sku": "SV_0011_VERDE_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLWD82J6",
+        "productType": "DRYING_RACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "itemName": "Escorredor de Silicone Retrátil Dobrável Quadrado com Alças, Coador Multiuso para Pia, Macarrão, Frutas, Legumes e Verduras, 29 x 21,5 cm - Verde",
+        "createdDate": "2026-10-03T14:46:01.282Z",
+        "lastUpdatedDate": "2026-10-03T15:07:25.996Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/41rk4HzQR7L.jpg",
+          "height": 600,
+          "width": 600
+        }
+      }
+    ],
+    "offers": []
+  },
+  {
+    "sku": "SV_0011_VERMELHO_FBA",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HJT25LB3",
+        "productType": "DRYING_RACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "itemName": "Escorredor de Silicone Retrátil Dobrável Quadrado com Alças, Coador Multiuso para Pia, Macarrão, Frutas, Legumes e Verduras, 29 x 21,5 cm - Vermelho",
+        "createdDate": "2026-10-03T14:52:26.406Z",
+        "lastUpdatedDate": "2026-10-03T15:07:25.700Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/21FG7ijmjBL.jpg",
+          "height": 400,
+          "width": 400
+        }
+      }
+    ],
+    "offers": []
+  },
+  {
+    "sku": "SV_0011",
+    "summaries": [
+      {
+        "marketplaceId": "A2Q3Y263D00KWC",
+        "asin": "B0HLW62M4F",
+        "productType": "DRYING_RACK",
+        "conditionType": "new_new",
+        "status": [
+          "DISCOVERABLE"
+        ],
+        "itemName": "Escorredor de Silicone Retrátil Dobrável Quadrado com Alças, Coador Multiuso para Pia, Macarrão, Frutas, Legumes e Verduras, 29 x 21,5 cm",
+        "createdDate": "2026-10-03T14:46:10.521Z",
+        "lastUpdatedDate": "2026-10-03T15:07:25.145Z",
+        "mainImage": {
+          "link": "https://m.media-amazon.com/images/I/21FG7ijmjBL.jpg",
+          "height": 400,
+          "width": 400
+        }
+      }
+    ],
+    "offers": []
+  },
+  {
     "sku": "SV_NV0012_FBA",
     "summaries": [
       {
@@ -242,44 +311,6 @@
           "currency": "BRL",
           "currencyCode": "BRL",
           "amount": "31.99"
-        },
-        "audience": {
-          "value": "ALL",
-          "displayName": "Vender na Amazon"
-        }
-      }
-    ]
-  },
-  {
-    "sku": "SV_0011_FBA",
-    "summaries": [
-      {
-        "marketplaceId": "A2Q3Y263D00KWC",
-        "asin": "B0HJT25LB3",
-        "productType": "DRYING_RACK",
-        "conditionType": "new_new",
-        "status": [
-          "DISCOVERABLE"
-        ],
-        "fnSku": "X005B1KDKV",
-        "itemName": "Escorredor de Silicone Multiuso Quadrado Retrátil Dobrável para Cozinha Pia Frutas Legumes e Louças",
-        "createdDate": "2026-09-14T18:34:56.758Z",
-        "lastUpdatedDate": "2026-09-14T18:34:56.758Z",
-        "mainImage": {
-          "link": "https://m.media-amazon.com/images/I/21FG7ijmjBL.jpg",
-          "height": 400,
-          "width": 400
-        }
-      }
-    ],
-    "offers": [
-      {
-        "marketplaceId": "A2Q3Y263D00KWC",
-        "offerType": "B2C",
-        "price": {
-          "currency": "BRL",
-          "currencyCode": "BRL",
-          "amount": "25.99"
         },
         "audience": {
           "value": "ALL",
@@ -639,8 +670,8 @@
         "productType": "PERSONAL_CARE_APPLIANCE",
         "conditionType": "new_new",
         "status": [
-          "BUYABLE",
-          "DISCOVERABLE"
+          "DISCOVERABLE",
+          "BUYABLE"
         ],
         "fnSku": "X0058ZEB8F",
         "itemName": "Limpador de Ouvidos Kit com Peças em Aço Inox e Estojo para Higiene e Cuidados Pessoais",

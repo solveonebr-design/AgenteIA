@@ -175,9 +175,9 @@ table(["Variável", "Conteúdo", "Onde obter"], [
     ["`SPAPI_ENDPOINT` (opcional)", "`https://sellingpartnerapi-na.amazon.com`",
      "Se ausente, o script testa NA, EU e FE"],
 ], [4.2, 6.3, 6.5])
-note("**Atenção ao nome.** Na sessão original o client ID foi cadastrado como `SP_API_CLIENT_ID` (com um "
-     "sublinhado a mais) e os scripts esperam `SPAPI_CLIENT_ID`. Corrija o nome no ambiente. Enquanto não "
-     "corrigir, rode os scripts com `SPAPI_CLIENT_ID=\"${SPAPI_CLIENT_ID:-$SP_API_CLIENT_ID}\"`.")
+note("**Atenção aos nomes.** Os scripts leem exatamente os nomes acima. Um nome digitado diferente (ex.: "
+     "`SP_API_CLIENT_ID`, com um sublinhado a mais, erro que já ocorreu e foi corrigido) resulta em "
+     "\"Variavel de ambiente ausente\". Confira com o comando da seção 3.")
 h2("2.2 Acesso à rede")
 p("O nível \"Confiável\" **bloqueia** a Amazon (o proxy responde 403 ao CONNECT). Use \"Completo\" ou "
   "\"Personalizado\" mantendo a lista padrão de gerenciadores de pacotes e adicionando:")
@@ -210,7 +210,7 @@ curl -sS "$HTTPS_PROXY/__agentproxy/status" | grep -A3 recentRelayFailures
 p("Teste completo (somente leitura): gera a lista de anúncios em `data/`.")
 code("""
 cd scripts
-SPAPI_CLIENT_ID="${SPAPI_CLIENT_ID:-$SP_API_CLIENT_ID}" python3 listar_produtos.py ../data
+python3 listar_produtos.py ../data
 """)
 
 # ---------------------------------------------------------------- 4
@@ -224,7 +224,7 @@ table(["Caminho", "Função"], [
     ["`scripts/conteudo_sv0011.py`", "Título, bullets, descrição, palavras-chave e características otimizados "
      "da família SV_0011, com checagem de limites. Modos `preview` e `aplicar`."],
     ["`data/`", "Saídas: `marketplace_participations.json` (teste via GitHub Actions) e "
-     "`produtos_publicados.csv/.json` (retrato de 03/10/2026, antes das variações)."],
+     "`produtos_publicados.csv/.json` (retrato de 03/10/2026, já com a família SV_0011)."],
     ["`fotos/`", "Fotos em JPG usadas nos anúncios e `sv0011_fotos.json` (URLs por cor)."],
     ["`.github/workflows/main.yml`", "Teste de conexão alternativo no GitHub Actions usando *secrets* do "
      "repositório (independe do ambiente do Claude Code)."],
