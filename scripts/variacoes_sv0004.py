@@ -4,7 +4,8 @@
 Estrutura:
   SV_0004              pai (sem oferta), tema COLOR
   SV_0004_PRETO_FBA    filho Preto, no ASIN existente B0HJJJLPPQ (substitui o SKU 0004_FBA)
-  SV_0004_CINZA_FBA, SV_0004_AZUL_FBA  filhos novos
+  SV_0004_CINZA2_FBA, SV_0004_AZUL2_FBA  filhos novos (SV_0004_CINZA_FBA e SV_0004_AZUL_FBA ficaram
+                       presos ao ASIN do preto na Amazon e nao podem ser reutilizados)
 
 Uso:
   python3 scripts/variacoes_sv0004.py preview        # valida tudo, nao grava
@@ -22,7 +23,7 @@ PRODUCT_TYPE = "MEAL_HOLDER"
 SOURCE_SKU = "0004_FBA"
 SOURCE_ASIN = "B0HJJJLPPQ"
 PARENT_SKU = "SV_0004"
-COLORS = {"Preto": "SV_0004_PRETO_FBA", "Cinza": "SV_0004_CINZA_FBA", "Azul": "SV_0004_AZUL_FBA"}
+COLORS = {"Preto": "SV_0004_PRETO_FBA", "Cinza": "SV_0004_CINZA2_FBA", "Azul": "SV_0004_AZUL2_FBA"}
 EXISTING_ASIN_COLOR = "Preto"
 PRICE = 32.99
 
@@ -137,6 +138,11 @@ def build(source, mkt):
                                    "our_price": [{"schedule": [{"value_with_tax": PRICE}]}]}]
         if color == EXISTING_ASIN_COLOR:
             a["merchant_suggested_asin"] = [{"value": SOURCE_ASIN, "marketplace_id": mkt}]
+        else:
+            # numero de peca/modelo proprio por cor: com o mesmo "0004" a Amazon casou as cores no ASIN do preto
+            ref = f"0004-{color.upper()}"
+            a["part_number"] = [{"value": ref, "marketplace_id": mkt}]
+            a["model_number"] = [{"value": ref, "marketplace_id": mkt}]
         steps.append((sku, "LISTING", a))
     return steps
 

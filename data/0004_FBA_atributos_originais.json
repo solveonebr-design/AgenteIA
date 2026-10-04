@@ -1,0 +1,435 @@
+{
+ "sku": "0004_FBA",
+ "summaries": [
+  {
+   "marketplaceId": "A2Q3Y263D00KWC",
+   "asin": "B0HJJJLPPQ",
+   "productType": "MEAL_HOLDER",
+   "conditionType": "new_new",
+   "status": [
+    "DISCOVERABLE"
+   ],
+   "fnSku": "X005AY4549",
+   "itemName": "Bolsa Térmica Lancheira com Alça Ajustável para Alimentos e Bebidas, Prática e Fácil de Transportar",
+   "createdDate": "2026-09-11T20:24:38.793Z",
+   "lastUpdatedDate": "2026-09-11T20:31:20.918Z",
+   "mainImage": {
+    "link": "https://m.media-amazon.com/images/I/415AZVA2ikL.jpg",
+    "height": 500,
+    "width": 500
+   }
+  }
+ ],
+ "relationships": [],
+ "attributes": {
+  "color": [
+   {
+    "language_tag": "pt_BR",
+    "standardized_values": [
+     "PRETO | AZUL | CINZA"
+    ],
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "included_components": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Bolsa",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "ncm_code": [
+   {
+    "value": "40149010",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_package_weight": [
+   {
+    "unit": "grams",
+    "value": 168.0,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "skip_offer": [
+   {
+    "value": false,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "fulfillment_availability": [
+   {
+    "fulfillment_channel_code": "AMAZON_NA"
+   }
+  ],
+  "manufacturer": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Não Especificado",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "capacity": [
+   {
+    "unit": "liters",
+    "value": 6.7,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_weight": [
+   {
+    "unit": "grams",
+    "value": 168.0,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "is_dishwasher_safe": [
+   {
+    "value": false,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "model_name": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Bolsa Térmica Lancheira Com Alça Ajustavel",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "external_testing_certification": [
+   {
+    "value": "Não aplicável",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "recommended_browse_nodes": [
+   {
+    "value": "17125191011",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "bullet_point": [
+   {
+    "language_tag": "pt_BR",
+    "value": "✅TAMANHO PRÁTICO: Com dimensões de 22 cm de comprimento x 16 cm de largura x 19 cm de altura, ideal para transportar alimentos e bebidas.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "✅ALÇA AJUSTÁVEL: Possui alça regulável que permite adaptar o comprimento para maior conforto e praticidade durante o transporte.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "✅CONSERVA A TEMPERATURA: Desenvolvida para transportar alimentos e bebidas, ajudando a preservar sua temperatura durante o deslocamento.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "✅IDEAL PARA O DIA A DIA: Perfeita para levar lanches e refeições ao trabalho, escola, faculdade, passeios, viagens e outras ocasiões.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "✅PRÁTICA E PORTÁTIL: Modelo funcional e fácil de transportar, proporcionando praticidade para organizar e levar seus alimentos para onde precisar.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_package_quantity": [
+   {
+    "value": 1,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "model_number": [
+   {
+    "value": "0004",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "product_description": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Bolsa Térmica Lancheira com Alça Ajustável, ideal para transportar alimentos e bebidas com praticidade. Com dimensões de 22C x 16L x 19A cm, possui tamanho funcional para o dia a dia e alça ajustável que facilita o transporte. Uma excelente opção para trabalho, escola, faculdade, passeios e viagens.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "brand": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Genérico",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "supplier_declared_dg_hz_regulation": [
+   {
+    "value": "not_applicable",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "supplier_declared_has_product_identifier_exemption": [
+   {
+    "value": true,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "generic_keyword": [
+   {
+    "language_tag": "pt_BR",
+    "value": "bolsa térmica; lancheira térmica; bolsa para alimentos; lancheira com alça; bolsa térmica para comida; lancheira para trabalho; bolsa para marmita; lancheira para escola; bolsa térmica ajustável",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "special_feature": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Isolado termicamente",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "import_designation": [
+   {
+    "language_tag": "pt_BR",
+    "value": "0",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "country_of_origin": [
+   {
+    "value": "CN",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "is_microwaveable": [
+   {
+    "value": false,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "merchant_shipping_group": [
+   {
+    "value": "legacy-template-id",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_name": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Bolsa Térmica Lancheira com Alça Ajustável para Alimentos e Bebidas, Prática e Fácil de Transportar",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "is_this_product_subject_to_buyer_age_restrictions": [
+   {
+    "value": false,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "list_price": [
+   {
+    "currency": "BRL",
+    "value_with_tax": 32.99,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "batteries_required": [
+   {
+    "value": false,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "power_source_type": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Não aplicável",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_depth_width_height": [
+   {
+    "depth": {
+     "unit": "centimeters",
+     "value": 22.0
+    },
+    "height": {
+     "unit": "centimeters",
+     "value": 19.0
+    },
+    "width": {
+     "unit": "centimeters",
+     "value": 16.0
+    },
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "merchant_suggested_asin": [
+   {
+    "value": "B0HJJJLPPQ",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "number_of_items": [
+   {
+    "value": 1,
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "condition_type": [
+   {
+    "value": "new_new",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "item_package_dimensions": [
+   {
+    "height": {
+     "unit": "centimeters",
+     "value": 19.0
+    },
+    "length": {
+     "unit": "centimeters",
+     "value": 22.0
+    },
+    "width": {
+     "unit": "centimeters",
+     "value": 16.0
+    },
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "material": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Poliéster",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "part_number": [
+   {
+    "value": "0004",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "style": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Casual",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "care_instructions": [
+   {
+    "language_tag": "pt_BR",
+    "value": "Limpar com pano macio e úmido.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Não utilizar máquina de lavar.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Não utilizar alvejantes ou produtos químicos abrasivos.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Não passar a ferro.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Não colocar em secadora.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Deixar secar naturalmente, em local ventilado e à sombra.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   },
+   {
+    "language_tag": "pt_BR",
+    "value": "Não expor diretamente a fontes de calor ou altas temperaturas.",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_4": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/61UX6udOWHL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_2": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/613xCOK8BXL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "main_product_image_locator": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/71v0LkBl48L.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_3": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/51yLmPzdMzL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_8": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/61t3GnpQHiL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_1": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/71FOMak7wqL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_6": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/517Lp-dWfHL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_7": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/51GY7x7VuNL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "other_product_image_locator_5": [
+   {
+    "media_location": "https://m.media-amazon.com/images/I/61q7c0PWjjL.jpg",
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ],
+  "purchasable_offer": [
+   {
+    "currency": "BRL",
+    "start_at": {
+     "value": "2026-09-11T20:24:38.793Z"
+    },
+    "end_at": {
+     "value": null
+    },
+    "audience": "ALL",
+    "our_price": [
+     {
+      "schedule": [
+       {
+        "value_with_tax": 32.99
+       }
+      ]
+     }
+    ],
+    "marketplace_id": "A2Q3Y263D00KWC"
+   }
+  ]
+ },
+ "issues": []
+}
