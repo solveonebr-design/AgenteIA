@@ -45,21 +45,21 @@ NV12 = {
 
 ITEMS = {
     "0001_FBA": {
-        "title": ("Kit Limpador de Ouvido 7 Peças em Aço Inox com Estojo, Removedor de Cera Reutilizável para "
-                  "Higiene Pessoal, Compacto para Viagem"),
+        "title": ("Kit Limpador de Ouvido 7 Peças: 6 Ferramentas em Aço Inox e Estojo, Removedor de Cera "
+                  "Reutilizável para Higiene Pessoal, Compacto para Viagem"),
         "bullets": [
-            "KIT COM 7 PEÇAS: ferramentas com pontas em formatos variados para a higiene da parte externa do "
-            "ouvido.",
+            "KIT COM 7 PEÇAS: 6 ferramentas com pontas em formatos variados para a higiene da parte externa do "
+            "ouvido, mais 1 estojo.",
             "AÇO INOXIDÁVEL REUTILIZÁVEL: peças metálicas que podem ser higienizadas e usadas novamente, uma "
             "alternativa às hastes descartáveis.",
-            "ESTOJO ORGANIZADOR: mantém as 7 peças reunidas e protegidas, facilitando guardar em casa ou levar "
+            "ESTOJO ORGANIZADOR: mantém as 6 ferramentas reunidas e protegidas, facilitando guardar em casa ou levar "
             "na bolsa e na mala.",
             "COMPACTO E LEVE: o kit pesa cerca de 30 g e cabe em qualquer nécessaire, ideal para viagens.",
             "USE COM CUIDADO: faça movimentos suaves apenas na entrada do canal auditivo e higienize as peças com "
             "álcool após cada uso. Em caso de dor ou desconforto, procure um médico.",
         ],
         "description": (
-            "Kit com 7 peças em aço inoxidável para a higiene da parte externa do ouvido, acompanhado de estojo "
+            "Kit com 7 peças: 6 ferramentas em aço inoxidável para a higiene da parte externa do ouvido e 1 estojo "
             "organizador.\n\n"
             "As pontas em formatos variados atendem a diferentes necessidades, e o material metálico permite "
             "higienizar e reutilizar as peças. O estojo mantém tudo reunido e protegido, o que facilita guardar "
@@ -67,7 +67,7 @@ ITEMS = {
             "Modo de uso: utilize com movimentos suaves apenas na entrada do canal auditivo. Não introduza as "
             "peças profundamente. Higienize com álcool antes e depois do uso. Mantenha fora do alcance de "
             "crianças.\n\n"
-            "Conteúdo da embalagem: 7 peças em aço inox e 1 estojo."
+            "Conteúdo da embalagem: 6 ferramentas em aço inox e 1 estojo."
         ),
         "keywords": ("cureta auricular cerume orelha higienização limpeza auditiva espiral ferramenta "
                      "nécessaire cuidados"),
