@@ -30,12 +30,14 @@ GH = "https://raw.githubusercontent.com/solveonebr-design/AgenteIA/ca7586d6e2112
 AMZ = "https://m.media-amazon.com/images/I/"
 ALL_COLORS = AMZ + "41xkBv7yqaL.jpg"      # as 4 cores lado a lado
 STACKED = AMZ + "51orBiOrL%2BL.jpg"         # formas empilhadas, 4 cores
+PRESS = AMZ + "51Mf5twUy0L.jpg"           # dedo pressionando o fundo (verde)
+POP = AMZ + "51NC%2BSBFhcL.jpg"           # cubo saindo da forma (verde)
+COLLAGE = AMZ + "61SgohDMfUL.jpg"         # colagem de uso (azul, laranja, frutas)
 PHOTOS = {
-    "Verde": [AMZ + "41sHyCmWwCL.jpg", GH + "verde_medidas.jpg", AMZ + "51Mf5twUy0L.jpg",
-              AMZ + "51NC%2BSBFhcL.jpg", ALL_COLORS, STACKED],
-    "Azul": [AMZ + "515vMR2pRoL.jpg", GH + "azul_medidas.jpg", AMZ + "61SgohDMfUL.jpg", ALL_COLORS, STACKED],
-    "Rosa": [GH + "rosa_principal.jpg", AMZ + "51zOAim6RGL.jpg", ALL_COLORS, STACKED],
-    "Amarelo": [GH + "amarelo_principal.jpg", GH + "amarelo_medidas.jpg", ALL_COLORS, STACKED],
+    "Verde": [AMZ + "41sHyCmWwCL.jpg", GH + "verde_medidas.jpg", PRESS, POP, COLLAGE, ALL_COLORS, STACKED],
+    "Azul": [AMZ + "515vMR2pRoL.jpg", GH + "azul_medidas.jpg", COLLAGE, PRESS, POP, ALL_COLORS, STACKED],
+    "Rosa": [GH + "rosa_principal.jpg", AMZ + "51zOAim6RGL.jpg", PRESS, POP, COLLAGE, ALL_COLORS, STACKED],
+    "Amarelo": [GH + "amarelo_principal.jpg", GH + "amarelo_medidas.jpg", PRESS, POP, COLLAGE, ALL_COLORS, STACKED],
 }
 
 TITLE = ("Forma de Gelo com Tampa e Fundo de Silicone Flexível, 14 Cubos, Bandeja Empilhável para Freezer, "
@@ -132,15 +134,33 @@ def build(source, mkt):
     return steps
 
 
+def update_photos(client, seller, mkt, preview):
+    """Substitui a galeria de cada anuncio pela lista de PHOTOS (pai usa a do Verde)."""
+    plan = {PARENT_SKU: PHOTOS["Verde"], **{sku: PHOTOS[color] for color, sku in COLORS.items()}}
+    print("Fotos:", "PRE-VISUALIZACAO (nada e gravado)" if preview else "APLICAR")
+    for sku, urls in plan.items():
+        cur = client.get(f"/listings/2021-08-01/items/{seller}/{sku}",
+                         {"marketplaceIds": mkt, "includedData": "attributes"})["attributes"]
+        want = images(urls, mkt)
+        ops = [{"op": "replace", "path": f"/attributes/{k}", "value": val} for k, val in want.items()]
+        ops += [{"op": "delete", "path": f"/attributes/{k}", "value": cur[k]}
+                for k in v.IMAGE_ATTRS if k in cur and k not in want]
+        resp = v.request(client, "PATCH", sku, {"productType": PRODUCT_TYPE, "patches": ops}, preview=preview)
+        print(f"PATCH {sku}: {resp.get('status')} ({len(urls)} fotos)",
+              [i.get("message") for i in resp.get("issues", [])])
+
+
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "preview"
-    if mode not in ("preview", "aplicar"):
-        sys.exit("Modo deve ser 'preview' ou 'aplicar'")
+    if mode not in ("preview", "aplicar", "fotos-preview", "fotos"):
+        sys.exit("Modo deve ser 'preview', 'aplicar', 'fotos-preview' ou 'fotos'")
     check()
     client = lp.Client()
     client.endpoint = lp.ENDPOINTS[0]
     mkt = lp.env("SPAPI_MARKETPLACE_ID")
     seller = lp.env("SPAPI_SELLER_ID")
+    if mode.startswith("fotos"):
+        return update_photos(client, seller, mkt, preview=mode == "fotos-preview")
     source = client.get(f"/listings/2021-08-01/items/{seller}/{SOURCE_SKU}",
                         {"marketplaceIds": mkt, "includedData": "attributes"})["attributes"]
     print("Modo:", "PRE-VISUALIZACAO (nada e gravado)" if mode == "preview" else "APLICAR")
