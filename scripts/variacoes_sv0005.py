@@ -35,8 +35,12 @@ SHARED = [AMZ + "61HhXTrLnIL.jpg",   # corredor + 7 cores empilhadas
           AMZ + "61lklaXPGeL.jpg",   # neoprene resistente a agua
           AMZ + "61chJqPHQGL.jpg",   # cinto elastico ate 120 cm
           AMZ + "71GrSvNk2iL.jpg"]   # usos: academia, ciclismo, corrida, pet
-MAIN = {"Laranja": "laranja", "Verde": "verde", "Rosa": "rosa", "Preto": "preto", "Azul": "azul_claro"}
-PHOTOS = {color: [GH + f"{name}_principal.jpg"] + SHARED for color, name in MAIN.items()}
+GH2 = "https://raw.githubusercontent.com/solveonebr-design/AgenteIA/321efd3d33dfcec36e0378f94883628df85674b8/fotos/sv0005/"
+# v2: fotos reais por cor (fundo e nome da cor removidos); verde gerado da laranja; preto mantido
+MAIN = {"Laranja": GH2 + "laranja_principal_v2.jpg", "Verde": GH2 + "verde_principal_v2.jpg",
+        "Rosa": GH2 + "rosa_principal_v2.jpg", "Preto": GH + "preto_principal.jpg",
+        "Azul": GH2 + "azul_claro_principal_v2.jpg"}
+PHOTOS = {color: [url] + SHARED for color, url in MAIN.items()}
 
 TITLE = ("Pochete Esportiva para Corrida com Porta Celular, Saída para Fone, Faixa Refletiva e Cinto Elástico "
          "Ajustável, Resistente à Água, Caminhada, Academia e Ciclismo")
