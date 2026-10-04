@@ -35,7 +35,7 @@ SHARED = [AMZ + "61HhXTrLnIL.jpg",   # corredor + 7 cores empilhadas
           AMZ + "61lklaXPGeL.jpg",   # neoprene resistente a agua
           AMZ + "61chJqPHQGL.jpg",   # cinto elastico ate 120 cm
           AMZ + "71GrSvNk2iL.jpg"]   # usos: academia, ciclismo, corrida, pet
-MAIN = {"Laranja": "laranja", "Verde": "verde", "Rosa": "rosa", "Preto": "preto", "Azul": "azul"}
+MAIN = {"Laranja": "laranja", "Verde": "verde", "Rosa": "rosa", "Preto": "preto", "Azul": "azul_claro"}
 PHOTOS = {color: [GH + f"{name}_principal.jpg"] + SHARED for color, name in MAIN.items()}
 
 TITLE = ("Pochete Esportiva para Corrida com Porta Celular, Saída para Fone, Faixa Refletiva e Cinto Elástico "
