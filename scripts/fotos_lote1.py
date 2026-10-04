@@ -27,7 +27,11 @@ NV12_GALLERY = amz("41p+6R5Co9L",   # medidas 13 x 9 cm
                    "61X1b2DeNjL",   # ambientacao na cozinha
                    "51lBDn2it-L")   # caixa (por ultimo)
 
+GH2 = "https://raw.githubusercontent.com/solveonebr-design/AgenteIA/1758200a1464c664189d9ec7098d4cf02c92272a/fotos/lote1/"
+
 PLAN = {
+    "0001_FBA": [GH2 + "0001_principal.jpg"] + amz("41TiVXpvBWL") + [GH2 + "0001_ambiente.jpg"] + amz(
+                    "51djuIOSx1L"),  # principal, medidas, ambiente, estojo na mao (saiu a antiga de 220 px)
     "0003_FBA": amz("51wPxInC5pL",   # principal
                     "51FJ2poDFTL",   # infografico das pontas 6 mm / 1 mm
                     "51yTXQzHxzL",   # aviso: envio somente corpo preto
