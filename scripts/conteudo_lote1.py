@@ -73,17 +73,16 @@ ITEMS = {
                      "nécessaire cuidados"),
     },
     "0003_FBA": {
-        "title": ("Kit 24 Canetas Marcadoras Permanentes Ponta Dupla, 24 Cores de Tinta, Corpo Preto, com Estojo, "
-                  "Marcador Artístico para Desenho, Lettering, Mangá, Artesanato e Escola"),
-        "color": "Preto",
+        "title": ("Kit 24 Canetas Marcadoras Permanentes Ponta Dupla Coloridas com Estojo, Marcador Artístico "
+                  "para Desenho, Lettering, Mangá, Artesanato e Escola"),
         "bullets": [
             "24 CORES: kit com 24 canetas em cores variadas para desenhos, ilustrações, lettering e trabalhos "
             "criativos.",
             "PONTA DUPLA: cada caneta tem duas pontas, uma para traços finos e detalhes e outra para preencher "
             "áreas maiores.",
             "TINTA PERMANENTE: marcadores permanentes para desenhos e marcações duradouras em papel.",
-            "CORPO PRETO E ESTOJO ORGANIZADOR: as canetas enviadas têm corpo plástico preto e ficam organizadas no "
-            "estojo, o que facilita guardar, transportar e encontrar cada cor.",
+            "ESTOJO ORGANIZADOR: as 24 canetas ficam organizadas no estojo, o que facilita guardar, transportar e "
+            "encontrar cada cor.",
             "PARA TODAS AS IDADES: ideal para estudantes, artistas e iniciantes em desenho, mangá, bullet journal, "
             "artesanato e trabalhos escolares.",
         ],
