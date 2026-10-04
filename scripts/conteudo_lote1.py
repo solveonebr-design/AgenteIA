@@ -73,16 +73,17 @@ ITEMS = {
                      "nécessaire cuidados"),
     },
     "0003_FBA": {
-        "title": ("Kit 24 Canetas Marcadoras Permanentes Ponta Dupla Coloridas com Estojo, Marcador Artístico "
-                  "para Desenho, Lettering, Mangá, Artesanato e Escola"),
+        "title": ("Kit 24 Canetas Marcadoras Permanentes Ponta Dupla, 24 Cores de Tinta, Corpo Preto, com Estojo, "
+                  "Marcador Artístico para Desenho, Lettering, Mangá, Artesanato e Escola"),
+        "color": "Preto",
         "bullets": [
             "24 CORES: kit com 24 canetas em cores variadas para desenhos, ilustrações, lettering e trabalhos "
             "criativos.",
             "PONTA DUPLA: cada caneta tem duas pontas, uma para traços finos e detalhes e outra para preencher "
             "áreas maiores.",
             "TINTA PERMANENTE: marcadores permanentes para desenhos e marcações duradouras em papel.",
-            "ESTOJO ORGANIZADOR: as 24 canetas ficam organizadas no estojo, o que facilita guardar, transportar e "
-            "encontrar cada cor.",
+            "CORPO PRETO E ESTOJO ORGANIZADOR: as canetas enviadas têm corpo plástico preto e ficam organizadas no "
+            "estojo, o que facilita guardar, transportar e encontrar cada cor.",
             "PARA TODAS AS IDADES: ideal para estudantes, artistas e iniciantes em desenho, mangá, bullet journal, "
             "artesanato e trabalhos escolares.",
         ],
@@ -93,7 +94,9 @@ ITEMS = {
             "contornos, detalhes e áreas maiores com a mesma cor. A variedade de 24 cores ajuda a combinar tons e "
             "destacar detalhes.\n\n"
             "Ideal para desenho, ilustração, lettering, mangá, bullet journal, artesanato e trabalhos escolares.\n\n"
-            "Conteúdo da embalagem: 24 canetas de ponta dupla e 1 estojo organizador."
+            "Importante: as imagens mostram canetas com corpo branco e com corpo preto. O kit enviado tem as canetas "
+            "com corpo preto, com tinta nas 24 cores.\n\n"
+            "Conteúdo da embalagem: 24 canetas de ponta dupla com corpo preto e 1 estojo organizador."
         ),
         "keywords": ("marcadores pincel colorir ilustração caderno bullet journal sketch arte presente papelaria "
                      "material escolar estudante"),
