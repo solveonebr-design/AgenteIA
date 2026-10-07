@@ -1,0 +1,131 @@
+name: Mercado Livre
+
+# O refresh token do Mercado Livre e de uso unico: cada renovacao devolve um
+# token novo e invalida o anterior. Este workflow e o UNICO lugar que renova o
+# token, e grava o novo valor no secret MELI_REFRESH_TOKEN logo em seguida.
+# Nao renove o token em nenhum outro lugar (sessao do Claude Code, maquina
+# local), senao o secret fica com um token invalido.
+
+on:
+  workflow_dispatch:
+    inputs:
+      acao:
+        description: "teste = conexao | listar = anuncios | autorizar = trocar code por token"
+        type: choice
+        options: [teste, listar, autorizar]
+        default: teste
+      code:
+        description: "Somente para autorizar: valor de ?code= da URL de retorno (vale ~10 min)"
+        required: false
+        default: ""
+  schedule:
+    # Toda segunda as 09:17 UTC: renova o token para ele nunca expirar (6 meses).
+    - cron: "17 9 * * 1"
+
+permissions:
+  contents: write
+
+# Duas execucoes simultaneas usariam o mesmo refresh token e uma delas o
+# invalidaria. A fila garante uma por vez.
+concurrency:
+  group: meli-token
+  cancel-in-progress: false
+
+jobs:
+  meli:
+    runs-on: ubuntu-latest
+    env:
+      ACAO: ${{ inputs.acao || 'teste' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Obter tokens no Mercado Livre
+        env:
+          MELI_CLIENT_ID: ${{ secrets.MELI_CLIENT_ID }}
+          MELI_CLIENT_SECRET: ${{ secrets.MELI_CLIENT_SECRET }}
+          MELI_REFRESH_TOKEN: ${{ secrets.MELI_REFRESH_TOKEN }}
+          MELI_REDIRECT_URI: ${{ vars.MELI_REDIRECT_URI }}
+          CODE: ${{ inputs.code }}
+        run: |
+          set -euo pipefail
+          for v in MELI_CLIENT_ID MELI_CLIENT_SECRET; do
+            [ -n "${!v}" ] || { echo "Secret ausente: $v"; exit 1; }
+          done
+
+          if [ "$ACAO" = "autorizar" ]; then
+            [ -n "$CODE" ] || { echo "Informe o code para a acao autorizar"; exit 1; }
+            [ -n "$MELI_REDIRECT_URI" ] || { echo "Variavel ausente: MELI_REDIRECT_URI"; exit 1; }
+            echo "::add-mask::$CODE"
+            RESP=$(curl -sS -X POST https://api.mercadolibre.com/oauth/token \
+              -H "accept: application/json" \
+              -d grant_type=authorization_code \
+              --data-urlencode "client_id=$MELI_CLIENT_ID" \
+              --data-urlencode "client_secret=$MELI_CLIENT_SECRET" \
+              --data-urlencode "code=$CODE" \
+              --data-urlencode "redirect_uri=$MELI_REDIRECT_URI")
+          else
+            [ -n "$MELI_REFRESH_TOKEN" ] || { echo "Secret ausente: MELI_REFRESH_TOKEN (rode a acao autorizar)"; exit 1; }
+            RESP=$(curl -sS -X POST https://api.mercadolibre.com/oauth/token \
+              -H "accept: application/json" \
+              -d grant_type=refresh_token \
+              --data-urlencode "client_id=$MELI_CLIENT_ID" \
+              --data-urlencode "client_secret=$MELI_CLIENT_SECRET" \
+              --data-urlencode "refresh_token=$MELI_REFRESH_TOKEN")
+          fi
+
+          ACCESS=$(echo "$RESP" | jq -r '.access_token // empty')
+          REFRESH=$(echo "$RESP" | jq -r '.refresh_token // empty')
+          if [ -z "$ACCESS" ] || [ -z "$REFRESH" ]; then
+            # Mostra so o codigo do erro, nunca o corpo inteiro.
+            echo "Falha ao obter token: $(echo "$RESP" | jq -r '.error // "desconhecido"')"
+            echo "Se for invalid_grant, o refresh token foi usado/revogado: rode a acao autorizar."
+            exit 1
+          fi
+          echo "::add-mask::$ACCESS"
+          echo "::add-mask::$REFRESH"
+          echo "MELI_ACCESS_TOKEN=$ACCESS" >> "$GITHUB_ENV"
+          echo "MELI_USER_ID=$(echo "$RESP" | jq -r '.user_id')" >> "$GITHUB_ENV"
+          # Guarda o refresh novo so para o proximo passo (arquivo fora do repositorio).
+          umask 077
+          printf '%s' "$REFRESH" > "$RUNNER_TEMP/meli_refresh"
+
+      - name: Gravar o novo refresh token no secret
+        # Roda logo apos a renovacao: o token antigo ja nao vale mais.
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT_SECRETS }}
+        run: |
+          set -euo pipefail
+          [ -n "$GH_TOKEN" ] || { echo "Secret ausente: GH_PAT_SECRETS. O token novo NAO foi salvo; rode autorizar de novo depois de cadastra-lo."; exit 1; }
+          gh secret set MELI_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY" < "$RUNNER_TEMP/meli_refresh"
+          rm -f "$RUNNER_TEMP/meli_refresh"
+          echo "MELI_REFRESH_TOKEN atualizado"
+
+      - name: Teste de conexao (/users/me)
+        if: env.ACAO == 'teste' || env.ACAO == 'autorizar'
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          HTTP=$(curl -sS -o "$RUNNER_TEMP/me.json" -w "%{http_code}" \
+            https://api.mercadolibre.com/users/me \
+            -H "Authorization: Bearer $MELI_ACCESS_TOKEN")
+          echo "HTTP status: $HTTP"
+          [ "$HTTP" = "200" ] || { jq '{status, error, message}' "$RUNNER_TEMP/me.json"; exit 1; }
+          # Grava so dados publicos da conta (sem e-mail, telefone, documento).
+          jq '{id, nickname, site_id, country_id, user_type, permalink,
+               seller_reputation: {level_id: .seller_reputation.level_id,
+                                   power_seller_status: .seller_reputation.power_seller_status}}' \
+            "$RUNNER_TEMP/me.json" > data/meli_usuario.json
+          cat data/meli_usuario.json
+          echo "Conexao OK"
+
+      - name: Listar anuncios
+        if: env.ACAO == 'listar'
+        run: python3 scripts/meli_listar_produtos.py data
+
+      - name: Salvar resultado no repositorio
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add data/
+          git commit -m "Mercado Livre: $ACAO" || echo "Sem mudancas"
+          git push
