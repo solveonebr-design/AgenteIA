@@ -151,6 +151,8 @@ Actions > **Mercado Livre** > Run workflow. Os workflows com `workflow_dispatch`
 | `teste` | — | Renova o token e chama `/users/me` | `data/meli_usuario.json` |
 | `listar` | — | Lista todos os anúncios da conta (`scripts/meli_listar_produtos.py`) | `data/meli_produtos.csv` e `.json` |
 | `mais_vendidos` | `categoria` opcional | Top 20 mais vendidos de cada categoria principal; com `categoria` (ex.: `MLB1574`), de cada subcategoria dela (`scripts/meli_mais_vendidos.py`) | `data/meli_mais_vendidos.csv` e `.json` |
+| `validar_anuncio` | `arquivo` | Confere o anúncio de `anuncios/<nome>.json` sem publicar (seção 6.1) | `data/meli_anuncio_<nome>_validar.json` |
+| `publicar_anuncio` | `arquivo`, `confirmar` = `PUBLICAR` | Valida de novo e publica o anúncio e a descrição (seção 6.1) | `data/meli_anuncio_<nome>_publicar.json` |
 | `autorizar` | `code` | Troca um `code` novo por tokens (seção 5) | `data/meli_usuario.json` |
 
 - **Agendamento:** toda segunda-feira às 09:17 UTC roda `teste`, o que renova o token e
@@ -160,6 +162,34 @@ Actions > **Mercado Livre** > Run workflow. Os workflows com `workflow_dispatch`
 - **Commit automático:** os arquivos em `data/` são gravados na branch em que o workflow
   rodou.
 - Os CSV usam `;` como separador e vírgula decimal, para abrir direto no Excel.
+
+### 6.1 Criar anúncios
+
+Preparado, mas nenhum anúncio foi publicado até 10/10/2026. Fluxo:
+
+1. Copiar `anuncios/_modelo.json` para `anuncios/<nome>.json` (sem `_` no início; arquivos
+   com `_` são modelos e o script recusa) e preencher: `title` (até 60 caracteres),
+   `category_id`, `price`, `available_quantity`, `listing_type_id` (`gold_special` =
+   Clássico, `gold_pro` = Premium), `shipping`, `attributes` (marca, modelo, SKU, código de
+   barras ou `EMPTY_GTIN_REASON`, medidas e peso da embalagem), `fotos` e `descricao`.
+2. **Fotos:** URL pública ou caminho de arquivo do repositório (ex.: `fotos/x.jpg`). Os
+   arquivos são enviados com `POST /pictures/items/upload`, então o repositório não precisa
+   ser público para as fotos. Formatos JPG ou PNG, mínimo 500 px, ideal 1200 px.
+3. Rodar a ação **`validar_anuncio`** com `arquivo` = `anuncios/<nome>.json`. O script lista
+   os atributos obrigatórios da categoria que faltam e chama `POST /items/validate`.
+   Execução verde = válido; vermelha = ver os erros no log e em
+   `data/meli_anuncio_<nome>_validar.json`. Corrigir e repetir até ficar válido.
+4. Mostrar a proposta ao dono da conta e obter confirmação explícita.
+5. Rodar **`publicar_anuncio`** com o mesmo `arquivo` e `confirmar` = `PUBLICAR`
+   (sem isso o passo para). O script valida de novo, cria o anúncio (`POST /items`), grava
+   a descrição (`POST /items/{id}/description`) e salva ID, status e link em
+   `data/meli_anuncio_<nome>_publicar.json`.
+
+Rodar `publicar_anuncio` duas vezes cria **dois anúncios**. Para alterar um anúncio já
+publicado será preciso uma ação de edição (`PUT /items/{id}`), ainda não criada.
+
+Possíveis bloqueios na primeira publicação: conta de vendedor incompleta (endereço,
+documentos, Mercado Pago) ou categoria que exige vínculo com o catálogo.
 
 ### Categorias principais (códigos)
 
@@ -190,6 +220,8 @@ Carros, Motos e Outros, Imóveis, Ingressos e Serviços não têm ranking de mai
 |---|---|
 | `.github/workflows/meli.yml` | Workflow do Mercado Livre: renovação do token, gravação do secret, ações `teste`, `listar`, `mais_vendidos`, `autorizar` e commit dos resultados |
 | `scripts/meli_listar_produtos.py` | Lista os anúncios da conta (`/users/{id}/items/search` com `search_type=scan` + multiget `/items`). Lê `MELI_ACCESS_TOKEN`; não renova token |
+| `scripts/meli_anuncio.py` | Valida (`POST /items/validate`) ou publica (`POST /items` + descrição) um anúncio a partir de `anuncios/<nome>.json`; faz upload das fotos locais |
+| `anuncios/` | Arquivos dos anúncios; `_modelo.json` é o modelo comentado |
 | `scripts/meli_mais_vendidos.py` | Top 20 por categoria (`/highlights/MLB/category/{id}`), completando título, preço e link via `/items`, `/products/{id}`, `/products/{id}/items` e `/user-products/{id}`. Lista no log as rotas que falharam |
 | `data/` | Saídas: `meli_usuario.json`, `meli_produtos.*`, `meli_mais_vendidos.*` (e os arquivos da Amazon) |
 | `docs/Integracao_Mercado_Livre.md` / `.pdf` | Este documento; o PDF é gerado por `docs/gerar_documentacao_meli.py` |
@@ -206,7 +238,10 @@ Carros, Motos e Outros, Imóveis, Ingressos e Serviços não têm ranking de mai
 | Categorias | `GET /sites/MLB/categories`, `GET /categories/{id}` | Categorias principais e subcategorias |
 | Mais vendidos | `GET /highlights/MLB/category/{id}` | Top 20 da categoria (tipos ITEM, PRODUCT, USER_PRODUCT) |
 | Produto de catálogo | `GET /products/{id}`, `GET /products/{id}/items?limit=1` | Nome, foto e preço da oferta vencedora |
-| Validação (futuro) | `POST /items/validate` | Validar um anúncio sem publicar |
+| Atributos da categoria | `GET /categories/{id}/attributes` | Atributos obrigatórios (`required`, `catalog_required`) |
+| Fotos | `POST /pictures/items/upload` (multipart) | Enviar foto local; devolve o id usado em `pictures` |
+| Validação | `POST /items/validate` | Valida o anúncio sem publicar (204 = válido) |
+| Publicação | `POST /items`, `POST /items/{id}/description` | Cria o anúncio e a descrição |
 
 Limitação conhecida: a API responde **403** para detalhes de anúncios (`/items/{id}`) e
 user products (`/user-products/{id}`) de **outros vendedores**. No ranking de mais vendidos,
@@ -268,9 +303,10 @@ para `api.mercadolibre.com`.
   `data/` apenas dados públicos da conta (sem e-mail, telefone ou documento).
 - O repositório é **público**: os secrets continuam protegidos, mas tudo em `data/` e no
   código fica visível. Não grave dados pessoais de clientes (pedidos, endereços) em `data/`.
-- Hoje a integração é **somente leitura**. Quando houver gravação (criar anúncio, alterar
-  preço/estoque, excluir), seguir o mesmo fluxo da Amazon: validar antes com
-  `POST /items/validate`, mostrar a proposta ao dono e só aplicar com confirmação explícita.
+- Gravações no Mercado Livre (hoje só `publicar_anuncio`): sempre `validar_anuncio` antes,
+  mostrar a proposta ao dono e só publicar com confirmação explícita. O workflow exige
+  `confirmar` = `PUBLICAR`. O Claude nunca dispara `publicar_anuncio` sem essa confirmação
+  da dona da conta na conversa.
 - Datas a acompanhar: vencimento do `GH_PAT_SECRETS` (anotado na criação) e execução
   semanal do agendamento.
 
@@ -290,8 +326,9 @@ Regras:
   nunca peça, exiba ou salve credenciais.
 - Para consultar dados, dispare o workflow (meli.yml) com a ação adequada,
   acompanhe a execução e leia os arquivos gerados em data/.
-- Leitura é livre. Qualquer gravação no Mercado Livre: valide antes, me
-  mostre a proposta e espere minha confirmação.
+- Leitura é livre. Qualquer gravação no Mercado Livre: rode antes
+  validar_anuncio, me mostre a proposta e espere minha confirmação antes
+  de rodar publicar_anuncio.
 - Faça commit e push dos scripts que criar (sem credenciais).
 
 Tarefa: <descreva aqui>

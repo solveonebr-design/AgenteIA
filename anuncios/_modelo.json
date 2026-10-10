@@ -1,0 +1,35 @@
+{
+  "_comentario": "MODELO. Copie para anuncios/<nome>.json (sem _ no inicio) e preencha. Campos: https://developers.mercadolivre.com.br/pt_br/publica-produtos . Sem codigo de barras: troque GTIN por EMPTY_GTIN_REASON (a validacao mostra os valores aceitos). listing_type_id: gold_special = Classico, gold_pro = Premium.",
+  "title": "Titulo do produto com ate 60 caracteres",
+  "category_id": "MLB0000",
+  "price": 25.99,
+  "currency_id": "BRL",
+  "available_quantity": 10,
+  "buying_mode": "buy_it_now",
+  "condition": "new",
+  "listing_type_id": "gold_special",
+  "shipping": {
+    "mode": "me2",
+    "local_pick_up": false,
+    "free_shipping": false
+  },
+  "sale_terms": [
+    {"id": "WARRANTY_TYPE", "value_name": "Garantia do vendedor"},
+    {"id": "WARRANTY_TIME", "value_name": "30 dias"}
+  ],
+  "attributes": [
+    {"id": "BRAND", "value_name": "Genérico"},
+    {"id": "MODEL", "value_name": "Modelo"},
+    {"id": "SELLER_SKU", "value_name": "SKU_INTERNO"},
+    {"id": "GTIN", "value_name": "7890000000000"},
+    {"id": "PACKAGE_LENGTH", "value_name": "30 cm"},
+    {"id": "PACKAGE_WIDTH", "value_name": "20 cm"},
+    {"id": "PACKAGE_HEIGHT", "value_name": "10 cm"},
+    {"id": "PACKAGE_WEIGHT", "value_name": "500 g"}
+  ],
+  "fotos": [
+    "fotos/arquivo_no_repositorio.jpg",
+    "https://exemplo.com/foto_publica.jpg"
+  ],
+  "descricao": "Descricao em texto simples, sem links, telefones ou e-mails."
+}
