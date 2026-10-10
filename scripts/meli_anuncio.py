@@ -5,8 +5,8 @@ Uso:
   python3 meli_anuncio.py validar  anuncios/<nome>.json <pasta_saida>
   python3 meli_anuncio.py publicar anuncios/<nome>.json <pasta_saida>
 
-validar  = confere atributos obrigatorios da categoria e chama POST /items/validate
-           (nao publica nada).
+validar  = checagens de qualidade (meli_qualidade.py: titulo, ficha tecnica, fotos,
+           descricao) e POST /items/validate (nao publica nada).
 publicar = valida de novo e, se estiver valido, cria o anuncio (POST /items) e a
            descricao (POST /items/{id}/description).
 
@@ -24,6 +24,8 @@ import time
 import urllib.error
 import urllib.request
 import uuid
+
+import meli_qualidade
 
 API = "https://api.mercadolibre.com"
 TOKEN = os.environ.get("MELI_ACCESS_TOKEN", "").strip()
@@ -93,21 +95,12 @@ def montar_corpo(anuncio):
     return corpo
 
 
-def conferir_atributos(corpo):
-    """Lista atributos obrigatorios da categoria que nao foram preenchidos."""
-    cat = corpo.get("category_id")
-    if not cat:
-        return ["category_id (categoria) nao informado"]
-    codigo, attrs = chamar("GET", f"/categories/{cat}/attributes")
-    if codigo != 200:
-        return [f"nao consegui ler os atributos da categoria {cat} (HTTP {codigo})"]
-    preenchidos = {a.get("id") for a in corpo.get("attributes", [])}
-    faltando = []
-    for a in attrs:
-        tags = a.get("tags") or {}
-        if (tags.get("required") or tags.get("catalog_required")) and a["id"] not in preenchidos:
-            faltando.append(f"{a['id']} ({a.get('name')})")
-    return faltando
+def atributos_categoria(categoria):
+    """Ficha tecnica da categoria (GET /categories/{id}/attributes) ou None."""
+    if not categoria:
+        return None
+    codigo, attrs = chamar("GET", f"/categories/{categoria}/attributes")
+    return attrs if codigo == 200 else None
 
 
 def validar(corpo):
@@ -134,21 +127,28 @@ def main():
 
     titulo = anuncio.get("title", "")
     print(f"Titulo ({len(titulo)}/60): {titulo}")
-    if len(titulo) > 60:
-        print("Aviso: titulo com mais de 60 caracteres")
+    if not anuncio.get("category_id"):
+        sys.exit("Informe category_id (categoria) no arquivo do anuncio")
+
+    # Checagens de qualidade (docs/Boas_Praticas_Anuncio_ML.md), antes de enviar fotos.
+    avaliacao = meli_qualidade.avaliar(anuncio, atributos_categoria(anuncio["category_id"]))
+    meli_qualidade.imprimir(avaliacao)
+    resultado["qualidade"] = {"nota": avaliacao["nota"],
+                              "ficha_tecnica_pct": avaliacao["ficha_tecnica_pct"],
+                              "itens": [f"[{n}] {m}" for n, m in avaliacao["itens"]]}
 
     corpo = montar_corpo(anuncio)
-    faltando = conferir_atributos(corpo)
-    resultado["atributos_obrigatorios_faltando"] = faltando
-    for f_ in faltando:
-        print(f"Atributo obrigatorio faltando: {f_}")
-
     ok, erros = validar(corpo)
     resultado["valido"] = ok
     resultado["erros_validacao"] = erros
     print("Validacao: VALIDO" if ok else "Validacao: INVALIDO")
     for e in erros:
         print("  " + e)
+
+    if avaliacao["bloqueia"]:
+        print("Bloqueado pelas checagens de qualidade (itens [BLOQUEIA] acima)")
+        ok = False
+        resultado["valido"] = False
 
     if modo == "publicar":
         if not ok:

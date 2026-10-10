@@ -167,7 +167,8 @@ Actions > **Mercado Livre** > Run workflow. Os workflows com `workflow_dispatch`
 
 ### 6.1 Criar anúncios
 
-Preparado, mas nenhum anúncio foi publicado até 10/10/2026. Fluxo:
+Preparado, mas nenhum anúncio foi publicado até 10/10/2026. O conteúdo (título, ficha
+técnica, fotos, descrição, preço) segue **`docs/Boas_Praticas_Anuncio_ML.md`**. Fluxo:
 
 1. Copiar `anuncios/_modelo.json` para `anuncios/<nome>.json` (sem `_` no início; arquivos
    com `_` são modelos e o script recusa) e preencher: `title` (até 60 caracteres),
@@ -177,8 +178,10 @@ Preparado, mas nenhum anúncio foi publicado até 10/10/2026. Fluxo:
 2. **Fotos:** URL pública ou caminho de arquivo do repositório (ex.: `fotos/x.jpg`). Os
    arquivos são enviados com `POST /pictures/items/upload`, então o repositório não precisa
    ser público para as fotos. Formatos JPG ou PNG, mínimo 500 px, ideal 1200 px.
-3. Rodar a ação **`validar_anuncio`** com `arquivo` = `anuncios/<nome>.json`. O script lista
-   os atributos obrigatórios da categoria que faltam e chama `POST /items/validate`.
+3. Rodar a ação **`validar_anuncio`** com `arquivo` = `anuncios/<nome>.json`. O script roda
+   as checagens de qualidade (`scripts/meli_qualidade.py`: título, ficha técnica, fotos e
+   descrição, com nota de 0 a 100 e itens BLOQUEIA/ALERTA/DICA) e chama
+   `POST /items/validate`. Itens BLOQUEIA impedem a publicação. Meta: nota de 85 ou mais.
    Execução verde = válido; vermelha = ver os erros no log e em
    `data/meli_anuncio_<nome>_validar.json`. Corrigir e repetir até ficar válido.
 4. Mostrar a proposta ao dono da conta e obter confirmação explícita.
@@ -204,8 +207,9 @@ documentos, Mercado Pago) ou categoria que exige vínculo com o catálogo.
    - `fotos` (opcional): **substitui todas** as fotos;
    - `descricao` (opcional): substitui a descrição.
 2. Rodar **`previa_edicao`** com `arquivo` = `anuncios/edicoes/<nome>.json`. O log mostra o
-   anúncio atual e cada mudança no formato `campo: antes -> depois`, e aponta problemas
-   (campo não editável, título acima de 60 caracteres, nada a mudar). Nada é alterado.
+   anúncio atual, cada mudança no formato `campo: antes -> depois`, problemas (campo não
+   editável, título acima de 60 caracteres, nada a mudar) e a nota de qualidade de como o
+   anúncio vai ficar depois da edição. Nada é alterado.
 3. Mostrar a prévia ao dono da conta e obter confirmação.
 4. Rodar **`editar_anuncio`** com o mesmo `arquivo` e `confirmar` = `EDITAR`. O script
    salva uma cópia do estado anterior em `data/meli_edicao_<nome>_antes_<data>.json`
@@ -250,12 +254,15 @@ Carros, Motos e Outros, Imóveis, Ingressos e Serviços não têm ranking de mai
 | `.github/workflows/meli.yml` | Workflow do Mercado Livre: renovação do token, gravação do secret, ações `teste`, `listar`, `mais_vendidos`, `autorizar` e commit dos resultados |
 | `scripts/meli_listar_produtos.py` | Lista os anúncios da conta (`/users/{id}/items/search` com `search_type=scan` + multiget `/items`). Lê `MELI_ACCESS_TOKEN`; não renova token |
 | `scripts/meli_anuncio.py` | Valida (`POST /items/validate`) ou publica (`POST /items` + descrição) um anúncio a partir de `anuncios/<nome>.json`; faz upload das fotos locais |
+| `scripts/meli_qualidade.py` | Checagens de qualidade (título, ficha técnica, fotos, descrição) e nota 0-100, conforme `docs/Boas_Praticas_Anuncio_ML.md` |
 | `scripts/meli_editar_anuncio.py` | Prévia (antes → depois) e aplicação de edições em anúncios publicados (`GET`/`PUT /items/{id}`, `PUT /items/{id}/description`) |
 | `anuncios/` | Arquivos dos anúncios; `_modelo.json` é o modelo comentado |
 | `anuncios/edicoes/` | Arquivos de edição; `_modelo.json` é o modelo comentado |
 | `scripts/meli_mais_vendidos.py` | Top 20 por categoria (`/highlights/MLB/category/{id}`), completando título, preço e link via `/items`, `/products/{id}`, `/products/{id}/items` e `/user-products/{id}`. Lista no log as rotas que falharam |
 | `data/` | Saídas: `meli_usuario.json`, `meli_produtos.*`, `meli_mais_vendidos.*` (e os arquivos da Amazon) |
-| `docs/Integracao_Mercado_Livre.md` / `.pdf` | Este documento; o PDF é gerado por `docs/gerar_documentacao_meli.py` |
+| `docs/Integracao_Mercado_Livre.md` / `.pdf` | Este documento |
+| `docs/Boas_Praticas_Anuncio_ML.md` / `.pdf` | Guia de conteúdo dos anúncios (título, ficha técnica, fotos, descrição, preço) |
+| `docs/gerar_documentacao_meli.py` | Gera os dois PDFs a partir dos `.md` |
 | `.github/workflows/main.yml` | Teste de conexão da **Amazon** (independente desta integração) |
 
 ## 8. APIs utilizadas
@@ -350,7 +357,8 @@ Copie e cole em uma nova sessão do Claude Code com o repositório
 ```
 Você vai operar a integração da minha conta do Mercado Livre no repositório
 solveonebr-design/AgenteIA (branch main). Leia docs/Integracao_Mercado_Livre.md,
-o workflow .github/workflows/meli.yml e os scripts scripts/meli_*.py.
+docs/Boas_Praticas_Anuncio_ML.md, o workflow .github/workflows/meli.yml e os
+scripts scripts/meli_*.py.
 
 Regras:
 - A conexão roda SOMENTE pelo workflow "Mercado Livre" do GitHub Actions.
@@ -362,6 +370,8 @@ Regras:
   validar_anuncio (anúncio novo) ou previa_edicao (edição), me mostre o
   resultado e espere minha confirmação antes de rodar publicar_anuncio
   ou editar_anuncio.
+- Anúncios: escreva o conteúdo seguindo docs/Boas_Praticas_Anuncio_ML.md
+  (seção 12) e só me mostre a proposta com nota de qualidade de 85 ou mais.
 - Faça commit e push dos scripts que criar (sem credenciais).
 
 Tarefa: <descreva aqui>

@@ -21,7 +21,8 @@ import os
 import sys
 import time
 
-from meli_anuncio import chamar, enviar_foto
+import meli_qualidade
+from meli_anuncio import atributos_categoria, chamar, enviar_foto
 
 # Campos que o PUT /items aceita alterar. title e condition so sem vendas.
 PERMITIDOS = {"title", "price", "available_quantity", "status", "attributes", "shipping",
@@ -115,6 +116,28 @@ def main():
     for p in problemas:
         print("Problema: " + p)
 
+    # Checagens de qualidade sobre como o anuncio vai ficar depois da edicao.
+    novos = {a.get("id"): a for a in alteracoes.get("attributes") or []}
+    depois = {
+        "title": alteracoes.get("title", atual.get("title", "")),
+        "attributes": [novos.pop(a.get("id"), a) for a in atual.get("attributes") or []]
+                      + list(novos.values()),
+        "fotos": edicao.get("fotos") or [p.get("secure_url") or p.get("url") or ""
+                                         for p in atual.get("pictures") or []],
+    }
+    if edicao.get("descricao"):
+        depois["descricao"] = edicao["descricao"]
+    else:
+        cd, desc = chamar("GET", f"/items/{iid}/description")
+        depois["descricao"] = desc.get("plain_text", "") if cd == 200 else ""
+    avaliacao = meli_qualidade.avaliar(depois, atributos_categoria(atual.get("category_id")))
+    print("Depois da edicao:")
+    meli_qualidade.imprimir(avaliacao)
+    if avaliacao["bloqueia"]:
+        problemas.append("checagens de qualidade com itens [BLOQUEIA]")
+        print("Problema: checagens de qualidade com itens [BLOQUEIA]")
+
+
     os.makedirs(saida, exist_ok=True)
     copia = None
     if modo == "aplicar":
@@ -129,6 +152,9 @@ def main():
 
     resultado = {"arquivo": arquivo, "modo": modo, "item_id": iid, "alteracoes": linhas,
                  "problemas": problemas, "copia_antes": copia,
+                 "qualidade": {"nota": avaliacao["nota"],
+                               "ficha_tecnica_pct": avaliacao["ficha_tecnica_pct"],
+                               "itens": [f"[{n}] {m}" for n, m in avaliacao["itens"]]},
                  "data": time.strftime("%Y-%m-%d %H:%M:%S UTC", time.gmtime())}
 
     if modo == "aplicar" and not problemas:

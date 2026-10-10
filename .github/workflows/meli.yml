@@ -147,6 +147,7 @@ jobs:
           ARQUIVO: ${{ inputs.arquivo }}
         run: |
           [ -n "$ARQUIVO" ] || { echo "Informe o arquivo do anuncio"; exit 1; }
+          pip install --quiet pillow  # dimensoes das fotos (checagem de qualidade)
           python3 scripts/meli_anuncio.py validar "$ARQUIVO" data
 
       - name: Publicar anuncio
@@ -157,6 +158,7 @@ jobs:
         run: |
           [ -n "$ARQUIVO" ] || { echo "Informe o arquivo do anuncio"; exit 1; }
           [ "$CONFIRMAR" = "PUBLICAR" ] || { echo "Publicacao nao confirmada: digite PUBLICAR no campo confirmar"; exit 1; }
+          pip install --quiet pillow  # dimensoes das fotos (checagem de qualidade)
           python3 scripts/meli_anuncio.py publicar "$ARQUIVO" data
 
       - name: Previa da edicao (nao altera)
@@ -165,6 +167,7 @@ jobs:
           ARQUIVO: ${{ inputs.arquivo }}
         run: |
           [ -n "$ARQUIVO" ] || { echo "Informe o arquivo da edicao"; exit 1; }
+          pip install --quiet pillow  # dimensoes das fotos (checagem de qualidade)
           python3 scripts/meli_editar_anuncio.py previa "$ARQUIVO" data
 
       - name: Editar anuncio
@@ -175,6 +178,7 @@ jobs:
         run: |
           [ -n "$ARQUIVO" ] || { echo "Informe o arquivo da edicao"; exit 1; }
           [ "$CONFIRMAR" = "EDITAR" ] || { echo "Edicao nao confirmada: digite EDITAR no campo confirmar"; exit 1; }
+          pip install --quiet pillow  # dimensoes das fotos (checagem de qualidade)
           python3 scripts/meli_editar_anuncio.py aplicar "$ARQUIVO" data
 
       - name: Salvar resultado no repositorio

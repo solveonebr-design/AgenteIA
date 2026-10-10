@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Gera docs/Integracao_Mercado_Livre.pdf a partir do .md (pip install reportlab).
+"""Gera os PDFs da documentacao do Mercado Livre a partir dos .md (pip install reportlab).
 
-Uso: python3 docs/gerar_documentacao_meli.py
+Uso: python3 docs/gerar_documentacao_meli.py [arquivo.md ...]
+Sem argumentos, gera Integracao_Mercado_Livre.pdf e Boas_Praticas_Anuncio_ML.pdf.
 Converte o subconjunto de Markdown usado no documento: titulos, paragrafos,
 listas, citacoes, tabelas e blocos de codigo.
 """
 import html
 import os
 import re
+import sys
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
@@ -18,9 +20,7 @@ from reportlab.platypus import (KeepTogether, Paragraph, Preformatted, SimpleDoc
                                 Spacer, Table, TableStyle)
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-ORIGEM = os.path.join(AQUI, "Integracao_Mercado_Livre.md")
-DESTINO = os.path.join(AQUI, "Integracao_Mercado_Livre.pdf")
-RODAPE = "Integração Mercado Livre · AgenteIA"
+PADRAO = ["Integracao_Mercado_Livre.md", "Boas_Praticas_Anuncio_ML.md"]
 AZUL = colors.HexColor("#1f4e79")
 
 base = getSampleStyleSheet()
@@ -134,19 +134,25 @@ def rodape(canvas, doc):
     canvas.saveState()
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.grey)
-    canvas.drawString(2 * cm, 1.2 * cm, RODAPE)
+    canvas.drawString(2 * cm, 1.2 * cm, f"{doc.title} · AgenteIA")
     canvas.drawRightString(A4[0] - 2 * cm, 1.2 * cm, f"Página {doc.page}")
     canvas.restoreState()
 
 
+def gerar(origem):
+    with open(origem, encoding="utf-8") as f:
+        md = f.read()
+    titulo = next((l[2:].strip() for l in md.splitlines() if l.startswith("# ")), "AgenteIA")
+    destino = os.path.splitext(origem)[0] + ".pdf"
+    doc = SimpleDocTemplate(destino, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm,
+                            topMargin=1.8 * cm, bottomMargin=2 * cm, title=titulo, author="AgenteIA")
+    doc.build(converter(md, doc.width), onFirstPage=rodape, onLaterPages=rodape)
+    print(f"Gerado: {destino}")
+
+
 def main():
-    doc = SimpleDocTemplate(DESTINO, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm,
-                            topMargin=1.8 * cm, bottomMargin=2 * cm,
-                            title="Integração Mercado Livre", author="AgenteIA")
-    with open(ORIGEM, encoding="utf-8") as f:
-        hist = converter(f.read(), doc.width)
-    doc.build(hist, onFirstPage=rodape, onLaterPages=rodape)
-    print(f"Gerado: {DESTINO}")
+    for nome in sys.argv[1:] or [os.path.join(AQUI, n) for n in PADRAO]:
+        gerar(nome)
 
 
 if __name__ == "__main__":
