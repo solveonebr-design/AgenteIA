@@ -1,0 +1,16 @@
+{
+  "_comentario": "MODELO. Copie para anuncios/edicoes/<nome>.json (sem _ no inicio). Informe item_id (ex.: MLB1234567890) OU anuncio (nome do arquivo usado na publicacao, ex.: escorredor_verde). Em alteracoes, coloque so o que vai mudar. title e condition so mudam se o anuncio nao tiver vendas. status: active, paused ou closed (closed finaliza e nao volta). fotos substitui todas as fotos. descricao substitui a descricao.",
+  "item_id": "MLB0000000000",
+  "alteracoes": {
+    "price": 27.9,
+    "available_quantity": 15,
+    "status": "active",
+    "attributes": [
+      {"id": "MODEL", "value_name": "Novo modelo"}
+    ]
+  },
+  "fotos": [
+    "fotos/arquivo_no_repositorio.jpg"
+  ],
+  "descricao": "Nova descricao em texto simples."
+}
