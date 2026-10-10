@@ -113,6 +113,19 @@ def detalhes_user_product(upid):
     return info
 
 
+def link_padrao(tipo, cid):
+    """Link montado pelo codigo, para quando a API nao devolve o permalink.
+
+    A API nega (403) detalhes de anuncios de outros vendedores, mas a pagina
+    publica abre normalmente.
+    """
+    if tipo == "PRODUCT":
+        return f"https://www.mercadolivre.com.br/p/{cid}"
+    if tipo == "USER_PRODUCT":
+        return f"https://www.mercadolivre.com.br/up/{cid}"
+    return f"https://produto.mercadolivre.com.br/{cid[:3]}-{cid[3:]}"
+
+
 def main():
     saida = sys.argv[1] if len(sys.argv) > 1 else "."
     raiz = sys.argv[2].strip() if len(sys.argv) > 2 else ""
@@ -132,9 +145,11 @@ def main():
                 info = detalhes_produto(c["id"])
             elif info is None and c.get("type") == "USER_PRODUCT":
                 info = detalhes_user_product(c["id"])
+            info = info or {}
+            info["link"] = info.get("link") or link_padrao(c.get("type"), c["id"])
             linhas.append({"categoria_id": cat["id"], "categoria": cat["name"],
                            "posicao": c.get("position"), "tipo": c.get("type"),
-                           "id": c["id"], **(info or {})})
+                           "id": c["id"], **info})
         print(f"{cat['name']}: {len(conteudo)}")
 
     with open(os.path.join(saida, "meli_mais_vendidos.json"), "w", encoding="utf-8") as f:
