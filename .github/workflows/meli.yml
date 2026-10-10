@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       acao:
-        description: "teste = conexao | listar = anuncios | mais_vendidos = top 20 por categoria | validar_anuncio / publicar_anuncio = anuncio de anuncios/*.json | autorizar = trocar code por token"
+        description: "teste = conexao | listar = anuncios | mais_vendidos = top 20 por categoria | validar_anuncio / publicar_anuncio = anuncio novo | previa_edicao / editar_anuncio = alterar anuncio publicado | autorizar = trocar code por token"
         type: choice
-        options: [teste, listar, mais_vendidos, validar_anuncio, publicar_anuncio, autorizar]
+        options: [teste, listar, mais_vendidos, validar_anuncio, publicar_anuncio, previa_edicao, editar_anuncio, autorizar]
         default: teste
       code:
         description: "Somente para autorizar: valor de ?code= da URL de retorno (vale ~10 min)"
@@ -23,11 +23,11 @@ on:
         required: false
         default: ""
       arquivo:
-        description: "Somente para validar_anuncio/publicar_anuncio: arquivo do anuncio, ex. anuncios/escorredor_verde.json"
+        description: "Para anuncio novo: anuncios/<nome>.json | para edicao: anuncios/edicoes/<nome>.json"
         required: false
         default: ""
       confirmar:
-        description: "Somente para publicar_anuncio: digite PUBLICAR para confirmar"
+        description: "publicar_anuncio: digite PUBLICAR | editar_anuncio: digite EDITAR"
         required: false
         default: ""
   schedule:
@@ -158,6 +158,24 @@ jobs:
           [ -n "$ARQUIVO" ] || { echo "Informe o arquivo do anuncio"; exit 1; }
           [ "$CONFIRMAR" = "PUBLICAR" ] || { echo "Publicacao nao confirmada: digite PUBLICAR no campo confirmar"; exit 1; }
           python3 scripts/meli_anuncio.py publicar "$ARQUIVO" data
+
+      - name: Previa da edicao (nao altera)
+        if: env.ACAO == 'previa_edicao'
+        env:
+          ARQUIVO: ${{ inputs.arquivo }}
+        run: |
+          [ -n "$ARQUIVO" ] || { echo "Informe o arquivo da edicao"; exit 1; }
+          python3 scripts/meli_editar_anuncio.py previa "$ARQUIVO" data
+
+      - name: Editar anuncio
+        if: env.ACAO == 'editar_anuncio'
+        env:
+          ARQUIVO: ${{ inputs.arquivo }}
+          CONFIRMAR: ${{ inputs.confirmar }}
+        run: |
+          [ -n "$ARQUIVO" ] || { echo "Informe o arquivo da edicao"; exit 1; }
+          [ "$CONFIRMAR" = "EDITAR" ] || { echo "Edicao nao confirmada: digite EDITAR no campo confirmar"; exit 1; }
+          python3 scripts/meli_editar_anuncio.py aplicar "$ARQUIVO" data
 
       - name: Salvar resultado no repositorio
         # Roda mesmo se a validacao falhar, para gravar o relatorio de erros.
