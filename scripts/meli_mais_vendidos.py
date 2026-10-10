@@ -14,6 +14,7 @@ import json
 import os
 import sys
 import time
+from collections import Counter
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -22,6 +23,8 @@ API = "https://api.mercadolibre.com"
 SITE = "MLB"
 CAMPOS = ["categoria_id", "categoria", "posicao", "tipo", "id", "titulo",
           "preco", "moeda", "link", "imagem"]
+
+FALHAS = Counter()  # (rota, codigo HTTP) das consultas que falharam, para o log
 
 TOKEN = os.environ.get("MELI_ACCESS_TOKEN", "").strip()
 if not TOKEN:
@@ -42,7 +45,10 @@ def get(caminho, params=None, tentativas=6):
             if e.code in (429, 500, 502, 503, 504) and i < tentativas - 1:
                 time.sleep(2 ** i)
                 continue
-            if e.code in (403, 404):
+            if e.code in (400, 403, 404):
+                rota = "/".join(p if not any(ch.isdigit() for ch in p) else "{id}"
+                                for p in caminho.split("/"))
+                FALHAS[(rota, e.code)] += 1
                 return None
             corpo = e.read().decode(errors="replace")[:300]
             sys.exit(f"HTTP {e.code} em {caminho}: {corpo}")
@@ -67,6 +73,13 @@ def detalhes_itens(ids):
                 out[b["id"]] = {"titulo": b.get("title"), "preco": b.get("price"),
                                 "moeda": b.get("currency_id"), "link": b.get("permalink"),
                                 "imagem": b.get("thumbnail")}
+    for iid in ids:
+        if iid not in out:
+            b = get(f"/items/{iid}")
+            if b:
+                out[iid] = {"titulo": b.get("title"), "preco": b.get("price"),
+                            "moeda": b.get("currency_id"), "link": b.get("permalink"),
+                            "imagem": b.get("thumbnail")}
     return out
 
 
@@ -76,10 +89,28 @@ def detalhes_produto(pid):
     if not b:
         return {}
     win = b.get("buy_box_winner") or {}
+    if win.get("price") is None:
+        ofertas = (get(f"/products/{pid}/items", {"limit": 1}) or {}).get("results") or [{}]
+        win = ofertas[0]
     fotos = b.get("pictures") or [{}]
     return {"titulo": b.get("name"), "preco": win.get("price"),
             "moeda": win.get("currency_id"), "link": b.get("permalink"),
             "imagem": fotos[0].get("url")}
+
+
+def detalhes_user_product(upid):
+    """User product (USER_PRODUCT): nome e, se houver, preco de um anuncio dele."""
+    b = get(f"/user-products/{upid}")
+    if not b:
+        return {}
+    fotos = b.get("pictures") or [{}]
+    info = {"titulo": b.get("name"), "imagem": fotos[0].get("url") or fotos[0].get("secure_url")}
+    ofertas = (get(f"/user-products/{upid}/items", {"limit": 1}) or {}).get("results") or []
+    if ofertas:
+        item = ofertas[0] if isinstance(ofertas[0], dict) else get(f"/items/{ofertas[0]}") or {}
+        info.update({"preco": item.get("price"), "moeda": item.get("currency_id"),
+                     "link": item.get("permalink")})
+    return info
 
 
 def main():
@@ -99,6 +130,8 @@ def main():
             info = itens.get(c["id"]) if c.get("type") == "ITEM" else None
             if info is None and c.get("type") == "PRODUCT":
                 info = detalhes_produto(c["id"])
+            elif info is None and c.get("type") == "USER_PRODUCT":
+                info = detalhes_user_product(c["id"])
             linhas.append({"categoria_id": cat["id"], "categoria": cat["name"],
                            "posicao": c.get("position"), "tipo": c.get("type"),
                            "id": c["id"], **(info or {})})
@@ -116,8 +149,12 @@ def main():
             w.writerow({**l, "preco": "" if preco is None else str(preco).replace(".", ",")})
 
     print(f"Total: {len(linhas)} produtos em {len({l['categoria_id'] for l in linhas})} categorias")
+    print(f"Sem titulo: {sum(1 for l in linhas if not l.get('titulo'))}, "
+          f"sem preco: {sum(1 for l in linhas if l.get('preco') is None)}")
     if sem_ranking:
         print("Sem ranking: " + ", ".join(sem_ranking))
+    for (rota, codigo), n in FALHAS.most_common():
+        print(f"Falha HTTP {codigo} em {rota}: {n}x")
 
 
 if __name__ == "__main__":
