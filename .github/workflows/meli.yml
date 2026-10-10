@@ -10,12 +10,16 @@ on:
   workflow_dispatch:
     inputs:
       acao:
-        description: "teste = conexao | listar = anuncios | autorizar = trocar code por token"
+        description: "teste = conexao | listar = anuncios | mais_vendidos = top 20 por categoria | autorizar = trocar code por token"
         type: choice
-        options: [teste, listar, autorizar]
+        options: [teste, listar, mais_vendidos, autorizar]
         default: teste
       code:
         description: "Somente para autorizar: valor de ?code= da URL de retorno (vale ~10 min)"
+        required: false
+        default: ""
+      categoria:
+        description: "Somente para mais_vendidos: vazio = todas as categorias principais; ex. MLB1574 = subcategorias dela"
         required: false
         default: ""
   schedule:
@@ -121,6 +125,12 @@ jobs:
       - name: Listar anuncios
         if: env.ACAO == 'listar'
         run: python3 scripts/meli_listar_produtos.py data
+
+      - name: Mais vendidos por categoria
+        if: env.ACAO == 'mais_vendidos'
+        env:
+          CATEGORIA: ${{ inputs.categoria }}
+        run: python3 scripts/meli_mais_vendidos.py data "$CATEGORIA"
 
       - name: Salvar resultado no repositorio
         run: |

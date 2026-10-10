@@ -81,6 +81,7 @@ risco em colá-lo no formulário do workflow. Mesmo assim ele é mascarado no lo
 |-------------|------------------------------------------------------------------|-----------------------------------------|
 | `teste`     | Renova o token e chama `/users/me`                               | `data/meli_usuario.json`                |
 | `listar`    | Renova o token e lista todos os anúncios (`scripts/meli_listar_produtos.py`) | `data/meli_produtos.csv` e `.json` |
+| `mais_vendidos` | Top 20 mais vendidos de cada categoria principal (`scripts/meli_mais_vendidos.py`). Com `categoria` preenchida (ex.: `MLB1574`), percorre as subcategorias dela | `data/meli_mais_vendidos.csv` e `.json` |
 | `autorizar` | Troca um `code` novo por tokens (primeira vez ou após `invalid_grant`) | `data/meli_usuario.json`          |
 
 - **Agendamento:** toda segunda-feira às 09:17 UTC roda `teste`, o que renova o
